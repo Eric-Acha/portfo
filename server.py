@@ -1,23 +1,38 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, request, redirect
+import csv
 app = Flask(__name__)
 
 print(__name__)
 
-@app.route('/')
-def hello_world():
-    return render_template('index.html')  
+@app.route('/') 
+def my_home():
+    return render_template('index.html')    
 
-@app.route('/about')
-def about():
-    return render_template('About.html')  
+@app.route('/<string:page_name>')
+def page(page_name):
+    return render_template(page_name) 
 
-@app.route('/blog')
-def blog():
-    return 'Welcome to the blog page!'
+def write_to_file(data):
+    with open('database.txt', mode='a') as database:
+        email = data['email']
+        subject = data['subject']
+        message = data['message']
+        file = database.write(f'\n{email}, {subject}, {message}') 
 
-@app.route('/blog2')  
-def blog2():
-    return 'my second blog!'
+def write_to_csv(data):
+    with open('database.csv', mode='a', newline='') as database2:
+        email = data['email']
+        subject = data['subject']
+        message = data['message']
+        csv_writer = csv.writer(database2, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        csv_writer.writerow([email,subject,message]) 
 
-if __name__ == '__main__':
-    app.run(debug=True) 
+@app.route('/submit_form', methods=['GET', 'POST'])
+def submit_form():
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        write_to_csv(data)
+        return redirect('/thankyou.html') 
+    else:
+        return 'something went wrong. Try again!'
+    
