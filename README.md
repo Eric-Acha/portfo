@@ -27,7 +27,8 @@ The goal of this project is to present a clean, professional, and functional por
 
 ```
 my_portfolio/
-│── app.py
+│── server.py
+|__  gifs
 │── templates/
 │── static/
 │── README.md
