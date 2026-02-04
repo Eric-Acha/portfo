@@ -90,3 +90,11 @@ Focus areas include database management, backend development, cloud platforms, a
 ## License
 
 This project is for portfolio and demonstration purposes. Feel free to explore the code and provide feedback.
+
+### Project Demos
+
+Homepage Demo:
+![Homepage] (gifs/homepage.gif)
+
+Contact Page Demo:
+![Contact page] (gifs/contact.gif) 
