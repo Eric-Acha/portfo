@@ -8,6 +8,7 @@ venv/
 ENV/
 env/
 .venv/
+pyvenv.cfg
 
 # VS Code settings
 .vscode/
