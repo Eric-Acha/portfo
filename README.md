@@ -96,7 +96,7 @@ Focus areas include database management, backend development, cloud platforms, a
 
 This project is for portfolio and demonstration purposes. Feel free to explore the code and provide feedback.
 
-### Project Demos
+## Project Demos
 
 Homepage Demo:
 ![Homepage] (gifs/homepage.gif)
